@@ -9,7 +9,8 @@ app.get('/',(request,response) => {  //Ou Function(request,response){}
     }) // envio de uma estrutura de dados como resposta (Estrutura mais complexa que o send )
 })     // Método Get é necessário 2 parametros| 1º parametro: Nome da rota
 
-//http://localhost:3000/  //recomendado usar portas acima de 1024, pois portas de 0 a 1023 já são portas reservadas para serviços mais conhecidos
+//http://localhost:3000/  
+//recomendado usar portas acima de 1024, pois portas de 0 a 1023 já são portas reservadas para serviços mais conhecidos
 
 //OBS JavaScript não critica caso você não use ;, tanto faz pra ele 
 const port = 3000 //Definição da porta usada para gerar a aplicação
