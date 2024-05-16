@@ -6,6 +6,13 @@ const app = express() // comando usado para definir uma instancia do express (Es
 //Get
 app.get('/projects',(request,response) => { 
     
+    // const query = request.query  //Variavel responsavel por receber a consulta do método
+    const {title , owner, page} = request.query  //para funcionar é necessário que seja o mesmo nome que a busca no postman
+
+    // console.log(query)
+     console.log(title,owner,page)  
+
+
     return response.json([  //Quando realizado uma consulta será mostrado na tela pelo método response
         'Projeto 1',
         'Projeto 2'
