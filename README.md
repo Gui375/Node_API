@@ -123,3 +123,9 @@ Aula 5
 <!-- app.use(express.json()) //Configurar/Colocar esta linha sempre antes de qualquer rota, pois ele vai rodar esta linha antes de qualquer coisa
     const {name,owner} = request.body //Recebe as informações do front end e mostra no backend
  -->
+
+
+Aula 6
+
+<!-- const { v4: uuidv4 } = require('uuid');  //Importando dentro do código a biblioteca UUID
+const id = uuidv4() //Função que gera o código de identificação unica -->
