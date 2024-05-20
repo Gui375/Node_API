@@ -85,3 +85,41 @@ app.listen(port,() => {
 //Basico com node, criando um servidor HTTP com express -->
 
 Aula 3
+<!-- 
+//Get
+app.get('/projects',(request,response) => { 
+    
+    // const query = request.query  //Variavel responsavel por receber a consulta do método
+    const {title , owner, page} = request.query  //para funcionar é necessário que seja o mesmo nome que a busca no postman
+
+    // console.log(query)
+     console.log(title,owner,page)  
+
+
+    return response.json([  //Quando realizado uma consulta será mostrado na tela pelo método response
+        'Projeto 1',
+        'Projeto 2'
+    ]) 
+})      -->
+
+
+Aula 4
+
+<!-- app.put('/projects/:id/:name',(request,response) => {   //Id é necessário no método put, pois ele precisa entender onde atualizar a informação
+    
+    // const paramns = request.params  // Recebe os parametros de rota
+    const {id,name} = request.params  // Recebe os parametros de rota
+
+     console.log(id,name)
+
+    return response.json([  //Quando realizado uma consulta será mostrado na tela pelo método response
+        'Projeto 4',
+        'Projeto 2',
+        'Projeto 3'
+    ]) 
+})      -->
+
+Aula 5 
+<!-- app.use(express.json()) //Configurar/Colocar esta linha sempre antes de qualquer rota, pois ele vai rodar esta linha antes de qualquer coisa
+    const {name,owner} = request.body //Recebe as informações do front end e mostra no backend
+ -->
