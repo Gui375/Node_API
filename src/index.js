@@ -30,6 +30,10 @@ app.post('/projects',(request,response) => {
     }
     projects.push(project)
 
+    if(!name || !owner){ //Responsavel por verificar se não foi passado nada sem valor // (name == null  || owner == null)
+        return response.status(400).json({ error: 'Name and Owner are required'})
+    } 
+
     return response.status(201).json(project)
 })     
 
@@ -45,7 +49,10 @@ app.put('/projects/:id',(request,response) => {   //Id é necessário no método
     if(projectsIndex < 0 ){
         return response.status(404).json({ error: 'Project not found'})
     }
-    if(!name && !owner){ //Responsavel por verificar se não foi passado nada sem valor // (name == null  && owner == null)
+    // if(!name && !owner){ //Responsavel por verificar se não foi passado nada sem valor // (name == null  && owner == null)
+    //     return response.status(400).json({ error: 'Name and Owner are required'})
+    // } 
+    if(!name || !owner){ //Responsavel por verificar se não foi passado nada sem valor // (name == null  && owner == null)
         return response.status(400).json({ error: 'Name and Owner are required'})
     } 
 
@@ -54,7 +61,7 @@ app.put('/projects/:id',(request,response) => {   //Id é necessário no método
         name,
         owner
     }
-
+ 
     projects[projectsIndex] = project  //Pega a posição definida pelo projectsIndex e adiciona o objeto novo project
     return response.status(201).json(project)
 
@@ -63,10 +70,22 @@ app.put('/projects/:id',(request,response) => {   //Id é necessário no método
 //Delete
 app.delete('/projects/:id',(request,response) => {   //Id é necessário no método put, pois ele precisa entender onde atualizar a informação
     
-    return response.json([  //Quando realizado uma consulta será mostrado na tela pelo método response
-        'Projeto 2',
-        'Projeto 3'
-    ]) 
+    const {id} = request.params  // Recebe os parametros de rota
+    // const {name,owner} = request.body
+    
+    const projectsIndex = projects.findIndex(p => p.id == id) //Método de arrow function para buscar dentro da variavel p o id, e comparar o id da variavel com o id informado no código
+    
+    if(projectsIndex < 0 ){
+        return response.status(404).json({ error: 'Project not found'})
+    } //Tratativa caso não seja encontrado nada
+
+    if(!id){
+        return response.status(404).json({erro:'id are required'})
+    }
+
+    projects.splice(projectsIndex,1)
+
+    return response.status(204).send() //Esta sendo enviado como resposta do request o status 204 No content, ou seja, deu certo, mas não tem nada pra retornar 
 }) 
 
 

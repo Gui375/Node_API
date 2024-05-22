@@ -128,4 +128,5 @@ Aula 5
 Aula 6
 
 <!-- const { v4: uuidv4 } = require('uuid');  //Importando dentro do código a biblioteca UUID
-const id = uuidv4() //Função que gera o código de identificação unica -->
+const id = uuidv4() //Função que gera o código de identificação unica 
+return response.status(204).send() //Esta sendo enviado como resposta do request o status 204 No content, ou seja, deu certo, mas não tem nada pra retornar   -->
