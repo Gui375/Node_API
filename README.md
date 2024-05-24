@@ -130,3 +130,46 @@ Aula 6
 <!-- const { v4: uuidv4 } = require('uuid');  //Importando dentro do código a biblioteca UUID
 const id = uuidv4() //Função que gera o código de identificação unica 
 return response.status(204).send() //Esta sendo enviado como resposta do request o status 204 No content, ou seja, deu certo, mas não tem nada pra retornar   -->
+
+
+Aula 7
+
+<!-- 
+app.delete('/projects/:id',(request,response) => {   //Id é necessário no método put, pois ele precisa entender onde atualizar a informação
+    
+    const {id} = request.params  // Recebe os parametros de rota
+    // const {name,owner} = request.body
+    
+    const projectsIndex = projects.findIndex(p => p.id == id) //Método de arrow function para buscar dentro da variavel p o id, e comparar o id da variavel com o id informado no código
+    
+    if(projectsIndex < 0 ){
+        return response.status(404).json({ error: 'Project not found'})
+    } //Tratativa caso não seja encontrado nada
+
+    if(!id){
+        return response.status(404).json({erro:'id are required'})
+    }
+
+    projects.splice(projectsIndex,1)
+
+    return response.status(204).send() //Esta sendo enviado como resposta do request o status 204 No content, ou seja, deu certo, mas não tem nada pra retornar 
+})  -->
+
+Aula 8
+<!-- // MidleWare //Logs
+function LogRoutes(request,response,next){ //Next é um callback
+    // console.log(request)
+    const {method, url} = request //Pego tudo que está na request e desmembro em duas variaveis
+    const route = `[${method.toUpperCase()}] ${url}` //Craze que em JavaScript, concatenamos código com string
+    console.log(route)
+    return next()
+}
+
+//Get / Funcionando 
+
+app.use(LogRoutes) //Atraves do método Use que chamamos os MidleWare //Executa em todas as rotas, porque primeiro ele roda esse comando depois chama a rota
+// app.get('/projects',LogRoutes,(request,response) => {  //Rodar somente pra uma rota especifica 
+ -->
+
+ Aula 9
+ 

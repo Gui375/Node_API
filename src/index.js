@@ -13,7 +13,22 @@ const id = uuidv4() //Função que gera o código de identificação unica
 
 const projects = [] //Será o repositorio de todas as rotas do projeto
 
+
+// MidleWare //Logs
+function LogRoutes(request,response,next){ //Next é um callback
+    // console.log(request)
+    const {method, url} = request //Pego tudo que está na request e desmembro em duas variaveis
+    const route = `[${method.toUpperCase()}] ${url}` //Craze que em JavaScript, concatenamos código com string
+    console.log(route)
+    return next()
+}
+
 //Get / Funcionando 
+
+app.use(LogRoutes) //Atraves do método Use que chamamos os MidleWare //Executa em todas as rotas, porque primeiro ele roda esse comando depois chama a rota
+// app.get('/projects',LogRoutes,(request,response) => {  //Rodar somente pra uma rota especifica 
+
+
 app.get('/projects',(request,response) => { 
     
     return response.json(projects)  //Lista todos os projetos dentro do array
